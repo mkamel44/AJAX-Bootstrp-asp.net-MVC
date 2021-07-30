@@ -1,35 +1,54 @@
 ﻿/// <reference path="jquery-1.9.1.intellisense.js" />
 //Load Data in Table when documents is ready
-$(document).ready(function () {
-    loadData();
+$(function () {
+    GetEmployees(1);
 });
-
-//Load Data function
-function loadData() {
+$(document).on("click", ".Pager .page", function() {
+    GetEmployees(parseInt($(this).attr('page')));
+});
+function GetEmployees(pageIndex) {
     $.ajax({
+        type: "POST",
         url: "/Home/List",
-        type: "GET",
-        contentType: "application/json;charset=utf-8",
+        data: '{pageIndex: ' + pageIndex + '}',
+        contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (result) {
-            var html = '';
-            $.each(result, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + item.EmployeeID + '</td>';
-                html += '<td>' + item.Name + '</td>';
-                html += '<td>' + item.Age + '</td>';
-                html += '<td>' + item.State + '</td>';
-                html += '<td>' + item.Country + '</td>';
-                html += '<td><a href="#" onclick="return getbyID(' + item.EmployeeID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.EmployeeID + ')">Delete</a></td>';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+        success: OnSuccess,
+        failure: function (response) {
+            alert(response.d);
         },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
+        error: function (response) {
+            alert(response.d);
         }
     });
 }
+
+function OnSuccess(response) {
+    var xmlDoc = $.parseXML(response);
+    var xml = $(xmlDoc);
+    var customers = xml.find("Employee");
+    var html = '';
+    $.each(customers, function () {
+        var customer = $(this);
+        html += '<tr>';
+        html += '<td>' + $(this).find("EmployeeID").text() + '</td>';
+        html += '<td>' + $(this).find("Name").text() + '</td>';
+        html += '<td>' + $(this).find("Age").text() + '</td>';
+        html += '<td>' + $(this).find("State").text() + '</td>';
+        html += '<td>' + $(this).find("Country").text() + '</td>';
+        html += '<td><a href="#" onclick="return getbyID(' + $(this).find("EmployeeID").text() + ')">Edit</a> | <a href="#" onclick="Delele(' + $(this).find("EmployeeID").text() + ')">Delete</a></td>';
+        html += '</tr>';
+    });
+    $('.tbody').html(html);
+    var pager = xml.find("Pager");
+    $(".Pager").ASPSnippets_Pager({
+        ActiveCssClass: "current",
+        PagerCssClass: "pager",
+        PageIndex: parseInt(pager.find("PageIndex").text()),
+        PageSize: parseInt(pager.find("PageSize").text()),
+        RecordCount: parseInt(pager.find("RecordCount").text())
+    });
+};
 
 //Add Data Function 
 function Add() {
@@ -51,7 +70,7 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            loadData();
+            GetEmployees(1);
             $('#myModal').modal('hide');
         },
         error: function (errormessage) {
@@ -109,7 +128,7 @@ function Update() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            loadData();
+            GetEmployees(1);
             $('#myModal').modal('hide');
             $('#EmployeeID').val("");
             $('#Name').val("");
@@ -133,7 +152,7 @@ function Delele(ID) {
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                loadData();
+                GetEmployees(1);
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);

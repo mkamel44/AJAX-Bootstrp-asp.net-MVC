@@ -36,3 +36,35 @@ as
 Begin    
  Delete Employee where EmployeeID=@Id;    
 End  
+
+--For Paging Select
+CREATE PROCEDURE SelectEmployeePaging
+@PageIndex INT = 1
+,@PageSize INT = 10
+,@RecordCount INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT ROW_NUMBER() OVER
+        (
+        ORDER BY [EmployeeID] ASC
+        )AS RowNumber
+         ,[EmployeeID]
+         ,[Name]
+         ,[Age]
+         ,[State]
+         ,[Country]
+    INTO #Results
+    FROM [Employee] order by EmployeeID DESC 
+
+    SELECT @RecordCount = COUNT(*)
+    FROM #Results
+
+    SELECT * FROM #Results
+    WHERE RowNumber BETWEEN(@PageIndex -1) * @PageSize + 1 AND(((@PageIndex -1) * @PageSize + 1) + @PageSize) - 1
+    
+
+    DROP TABLE #Results
+END
+go
+

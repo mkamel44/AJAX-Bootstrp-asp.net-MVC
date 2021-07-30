@@ -13,40 +13,47 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+     <link href="~/Content/employee.css" rel="stylesheet" />
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/ASPSnippets_Pager.min.js"></script>
     <script src="~/Scripts/employee.js"></script>
 </head>
 <body>
     <div class="container">
         <h2>Employees Record</h2> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Employee</button><br /><br />
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        ID
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Age
-                    </th>
-                    <th>
-                        State
-                    </th>
-                    <th>
-                        Country
-                    </th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="tbody">
-
-            </tbody>
-        </table>
+        <form id="form1" runat="server">
+            <table id="gvCustomers" class="table table-bordered table-hover">
+               <thead>
+                  <tr>
+                      <th>
+                          ID
+                      </th>
+                      <th>
+                          Name
+                      </th>
+                      <th>
+                          Age
+                      </th>
+                      <th>
+                          State
+                      </th>
+                      <th>
+                          Country
+                      </th>
+                      <th>
+                          Action
+                      </th>
+                  </tr>
+              </thead>
+              <tbody class="tbody">
+  
+              </tbody>
+            </table>
+            <br />
+            <div class="Pager">
+            </div>
+        </form>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

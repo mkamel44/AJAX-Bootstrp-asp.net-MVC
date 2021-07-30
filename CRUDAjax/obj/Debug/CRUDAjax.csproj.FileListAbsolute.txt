@@ -36,3 +36,23 @@ C:\Users\Evolution Center\Downloads\CRUDAjax\CRUDAjax\CRUDAjax\bin\System.Web.Mv
 C:\Users\Evolution Center\Downloads\CRUDAjax\CRUDAjax\CRUDAjax\obj\Debug\CRUDAjax.csprojAssemblyReference.cache
 C:\Users\Evolution Center\Downloads\CRUDAjax\CRUDAjax\CRUDAjax\obj\Debug\CRUDAjax.csproj.CoreCompileInputs.cache
 C:\Users\Evolution Center\Downloads\CRUDAjax\CRUDAjax\CRUDAjax\obj\Debug\CRUDAjax.csproj.CopyComplete
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\obj\Debug\CRUDAjax.csprojAssemblyReference.cache
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\obj\Debug\CRUDAjax.csproj.CoreCompileInputs.cache
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\obj\Debug\CRUDAjax.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\obj\Debug\CRUDAjax.pdb
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\CRUDAjax.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\CRUDAjax.pdb
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\Microsoft.Web.Infrastructure.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Helpers.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Mvc.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Razor.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.Deployment.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.Razor.dll
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Razor.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.Deployment.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Webpages.Razor.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Helpers.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\bin\System.Web.Mvc.xml
+F:\مشروع asp.net mvc testing\Bootstrap_Ajax_asp.net mvc\CRUDAjax\obj\Debug\CRUDAjax.csproj.CopyComplete

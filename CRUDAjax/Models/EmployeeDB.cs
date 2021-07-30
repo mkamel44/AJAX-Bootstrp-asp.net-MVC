@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.WebPages;
 
 namespace CRUDAjax.Models
 {
@@ -37,7 +38,48 @@ namespace CRUDAjax.Models
                 return lst;
             }
         }
-
+        
+        //Return list of  Employees with paging
+       public string ListAll(int pageIndex)
+       {
+            int pageSize = ConfigurationManager.AppSettings["pageSize"].AsInt();
+            int recordCount = ConfigurationManager.AppSettings["recordCount"].AsInt();
+            string query = "[SelectEmployeePaging]";
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+            cmd.Parameters.AddWithValue("@PageSize", pageSize);
+            cmd.Parameters.Add("@RecordCount", SqlDbType.Int, recordCount).Direction = ParameterDirection.Output;
+            return GetData(cmd, pageIndex,pageSize).GetXml();
+        }
+   
+        private DataSet GetData(SqlCommand cmd, int pageIndex,int PageSize)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                using (SqlDataAdapter sda = new SqlDataAdapter())
+                {
+                    cmd.Connection = con;
+                    sda.SelectCommand = cmd;
+                    using (DataSet ds = new DataSet())
+                    {
+                        sda.Fill(ds, "Employee");
+                        string s = ds.ToString();
+                        DataTable dt = new DataTable("Pager");
+                        dt.Columns.Add("PageIndex");
+                        dt.Columns.Add("PageSize");
+                        dt.Columns.Add("RecordCount");
+                        dt.Rows.Add();
+                        dt.Rows[0]["PageIndex"] = pageIndex;
+                        dt.Rows[0]["PageSize"] = PageSize;
+                        dt.Rows[0]["RecordCount"] = cmd.Parameters["@RecordCount"].Value;
+                        ds.Tables.Add(dt);
+                        return ds;
+                    }
+                }
+            }
+        }
+       
         //Method for Adding an Employee
         public int Add(Employee emp)
         {

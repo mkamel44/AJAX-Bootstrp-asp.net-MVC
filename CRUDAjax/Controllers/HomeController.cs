@@ -15,9 +15,9 @@ namespace CRUDAjax.Controllers
         {
             return View();
         }
-        public JsonResult List()
+        public JsonResult List(int pageIndex)
         {
-            return Json(empDB.ListAll(),JsonRequestBehavior.AllowGet);
+            return Json(empDB.ListAll(pageIndex),JsonRequestBehavior.AllowGet);
         }
         public JsonResult Add(Employee emp)
         {
